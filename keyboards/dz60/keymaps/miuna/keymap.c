@@ -28,18 +28,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┤
   * │     │MC1│MC2│   │   │   │   │   │   │   │   │MS↑│   │     │
   * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐    │
-  * │∇     │   │   │   │   │   │ * │ / │   │   │MS←│MS→│   │    │
+  * │∇     │   │   │   │   │   │ * │ / │   │   │MS←│MS↓│MS→│    │
   * ├───┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┤
-  * │   │N/A│   │   │   │   │   │ - │ + │   │   │MS↓│   │PgU│   │
+  * │   │N/A│   │   │   │   │   │ - │ + │   │   │   │   │PgU│   │
   * ├───┴┬──┴─┬─┴──┬┴───┴───┼───┴┬──┴───┴───┼───┼───┼───┼───┼───┤
   * │LCtl│LGui│LAlt│N/A     │    │N/A       │RAl│RCt│Hm │PgD│Ed │
   * └────┴────┴────┴────────┴────┴──────────┴───┴───┴───┴───┴───┘
   */
   LAYOUT_60_nagino_asukara( \
     _______, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, KC_DEL,  \
-    XXXXXXX,          KC_BTN1, KC_BTN2, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_U, XXXXXXX, XXXXXXX, \
-    XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PAST, KC_PSLS, XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_L, KC_MS_R,          \
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PMNS, KC_PPLS, XXXXXXX, XXXXXXX, KC_MS_D, XXXXXXX, KC_PGUP, XXXXXXX, \
+    XXXXXXX,          KC_BTN1, KC_BTN2, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_U, XXXXXXX, KC_MS_R, \
+    XXXXXXX,          XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PAST, KC_PSLS, XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_L, XXXXXXX,          \
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PMNS, KC_PPLS, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PGUP, XXXXXXX, \
     _______, _______,          _______, XXXXXXX,          XXXXXXX,          XXXXXXX,          _______, _______, KC_HOME, KC_PGDN, KC_END   \
   )
 };
