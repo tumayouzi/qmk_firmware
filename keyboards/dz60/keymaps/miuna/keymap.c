@@ -10,11 +10,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┤
   * │ Tab │ Q │ W │ E │ R │ T │ Y │ U │ I │ O │ P │'  │[  │     │
   * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐Ent │
-  * │Fn    │ A │ S │ D │ F │ G │ H │ J │ K │ L │ ; │:  │]  │    │
+  * │LGui  │ A │ S │ D │ F │ G │ H │ J │ K │ L │ ; │:  │]  │    │
   * ├───┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┤
   * │LSt│N/A│ Z │ X │ C │ V │ B │ N │ M │ , │ . │ / │ \ │E/J│ ↑ │
   * ├───┴┬──┴─┬─┴──┬┴───┴───┼───┴┬──┴───┴───┼───┼───┼───┼───┼───┤
-  * │LCtl│LGui│LAlt│N/A     │Spc │N/A       │RAl│RCt│ ← │ → │ ↓ │
+  * │LCtl│ Fn │LAlt│N/A     │Spc │N/A       │RAl│RCt│ ← │ → │ ↓ │
   * └────┴────┴────┴────────┴────┴──────────┴───┴───┴───┴───┴───┘
   */
   [_BL] = LAYOUT_60_nagino_asukara( \
@@ -22,7 +22,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,           KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_QUOT, KC_LBRC,           \
     KC_LGUI,          KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_COLN, KC_RBRC, KC_ENT,   \
     KC_LSFT, XXXXXXX, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_BSLS, KC_ZKHK, KC_UP,    \
-    KC_LCTL, MO(1),            KC_LALT, XXXXXXX,          KC_SPC,           XXXXXXX,          KC_RCTL, KC_RALT, KC_LEFT, KC_RGHT, KC_DOWN   \
+    KC_LCTL, OSL(1),           KC_LALT, XXXXXXX,          KC_SPC,           XXXXXXX,          KC_RCTL, KC_RALT, KC_LEFT, KC_RGHT, KC_DOWN   \
   ),
 
   /* Function layer
@@ -31,11 +31,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   * ├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴───┤
   * │     │MC1│MC2│   │   │   │   │   │   │   │   │MS↑│   │     │
   * ├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┐    │
-  * │∇     │VUp│VDn│Mut│   │   │ * │ / │   │   │MS←│MS↓│MS→│    │
+  * │      │VUp│VDn│Mut│   │   │ * │ / │   │   │MS←│MS↓│MS→│    │
   * ├───┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬───┤
   * │   │N/A│RGB│HUI│HUD│VAI│VAD│ + │ - │   │   │BLS│BLT│   │PgU│
   * ├───┴┬──┴─┬─┴──┬┴───┴───┼───┴┬──┴───┴───┼───┼───┼───┼───┼───┤
-  * │LCtl│LGui│LAlt│N/A     │    │N/A       │RAl│RCt│Hm │Ed │PgD│
+  * │LCtl│ ∇  │LAlt│N/A     │    │N/A       │RAl│RCt│Hm │Ed │PgD│
   * └────┴────┴────┴────────┴────┴──────────┴───┴───┴───┴───┴───┘
   */
   [_FL1] = LAYOUT_60_nagino_asukara( \
@@ -48,30 +48,3 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 
-/* LED lighting setting */
-// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-//     switch (keycode) {
-//         case MO(1):
-//             if (record->event.pressed) {
-//
-//             } else {
-//                 PORTB &= ~(1 << 2);
-//             }
-//             return true;
-//         default:
-//             return true;
-//     }
-// }
-
-uint32_t layer_state_set_user(uint32_t state) {
-  switch (biton32(state)) {
-    case _BL:
-      PORTB |= (1 << 2);
-      break;
-    case _FL1:
-      PORTB &= ~(1 << 2);
-      break;
-  };
-
-    return state;
-};
